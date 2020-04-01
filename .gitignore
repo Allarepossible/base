@@ -1,0 +1,8 @@
+.idea/
+
+build/
+
+node_modules/
+
+tmp/
+test-report.xml
