@@ -10,7 +10,7 @@ const baseConfig = require('./webpack.common');
 const config = {
     mode: 'production',
     entry: {
-        index: ['@babel/polyfill', './src/index.tsx'],
+        index: ['@babel/polyfill', './src/client.tsx'],
         vendor: ['react', 'react-dom', 'react-hot-loader', 'react-router-dom', 'styled-components'],
     },
     devtool: 'source-map',

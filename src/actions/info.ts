@@ -25,8 +25,7 @@ export const fetchInfo: ActionCreator<ThunkAction<
     Info,
     ApiType<Info>,
     InfoActions
->> = () =>
-    async (dispatch, _, api) => {
+>> = () => async (dispatch, _, api) => {
         dispatch(fetchInfoAction());
 
         try {

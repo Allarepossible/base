@@ -4,6 +4,7 @@ const config = {
     resolve: {
         extensions: ['.js', '.json', '.ts', '.tsx'],
         alias: {
+            'react-dom': '@hot-loader/react-dom',
             components: path.resolve('src/components'),
             containers: path.resolve('src/containers'),
             entities: path.resolve('src/entities'),
@@ -16,8 +17,12 @@ const config = {
         rules: [
             {
                 test: /\.js$/,
-                use: ['source-map-loader'],
                 exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                    },
+                ],
             },
             {
                 test: /\.tsx?$/,

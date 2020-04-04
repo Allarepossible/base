@@ -1,24 +1,11 @@
-import React, {useEffect} from 'react';
-import {HashRouter as Router, Route} from 'react-router-dom';
-import {connect} from 'react-redux';
+import Contact from './pages/Contact';
+import Home from './pages/Home';
 
-import {fetchInfo} from 'actions/info';
-import HomePage from 'pages/HomePage';
-
-const Routes = ({getInfo}: {getInfo: () => void}) => {
-    useEffect(() => {
-        getInfo();
-    });
-
-    return (
-        <Router>
-            <Route exact path="/" component={HomePage} />
-        </Router>
-    );
-};
-
-const mapDispatchToProps = {
-    getInfo: fetchInfo,
-};
-
-export default connect(null, mapDispatchToProps)(Routes);
+export default [{
+    ...Home,
+    path: '/',
+    exact: true,
+}, {
+    ...Contact,
+    path: '/contact',
+}];

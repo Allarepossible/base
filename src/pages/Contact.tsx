@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 
-import ContactInfo from 'containers/ContactInfo';
-import {fetchContact} from 'actions/contact';
+import {fetchInfo} from 'actions/info';
 import {State} from 'entities/info';
 import {ContactId} from 'entities/contact';
 import Page from 'pages/Page';
@@ -13,16 +12,10 @@ interface Props {
     getContact: (p: number) => void;
 }
 
-const HomePage = ({title, contactId, getContact}: Props) => {
-    useEffect(() => {
-        if (contactId) {
-            getContact(contactId);
-        }
-    }, [contactId, getContact]);
-
+const Contact = ({title, contactId, getContact}: Props) => {
     return (
         <Page title={title}>
-            {contactId && <ContactInfo contactId={contactId}/>}
+            {contactId}
         </Page>
     );
 };
@@ -34,7 +27,10 @@ export const mapStateToProps = ({info}: State) => {
 };
 
 const mapDispatchToProps = {
-    getContact: fetchContact,
+    getContact: fetchInfo,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default {
+    loadData: ({dispatch}) => dispatch(fetchInfo()),
+    component: connect(mapStateToProps, mapDispatchToProps)(Contact)
+};

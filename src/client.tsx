@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { renderRoutes } from 'react-router-config';
+import {HashRouter as Router} from 'react-router-dom';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
@@ -14,7 +16,7 @@ import Routes from './Routes';
 import './assets/favicon.ico';
 
 const axiosInstance = axios.create({
-    baseURL: 'http://demo5795732.mockable.io/',
+    baseURL: '/api',
 });
 
 declare global {
@@ -30,7 +32,9 @@ const store = createStore(
 ReactDOM.render(
     <ThemeProvider theme={theme}>
         <Provider store={store}>
-            <Routes />
+            <Router>
+                <div>{renderRoutes(Routes)}</div>
+            </Router>
         </Provider>
     </ThemeProvider>,
     document.getElementById('root')
