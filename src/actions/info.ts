@@ -26,13 +26,13 @@ export const fetchInfo: ActionCreator<ThunkAction<
     ApiType<Info>,
     InfoActions
 >> = () => async (dispatch, _, api) => {
-        dispatch(fetchInfoAction());
+    dispatch(fetchInfoAction());
 
-        try {
-            const {data} = await api.get('info');
+    try {
+        const {data} = await api.get('info');
 
-            dispatch(fetcInfoSuccessAction(data));
-        } catch (ex) {
-            dispatch(fetchInfoFailureAction(ex));
-        }
-    };
+        dispatch(fetcInfoSuccessAction(data));
+    } catch (ex) {
+        dispatch(fetchInfoFailureAction(ex));
+    }
+};

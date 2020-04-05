@@ -8,13 +8,8 @@ const axiosInstance = axios.create({
     baseURL: 'http://demo5795732.mockable.io',
 });
 
-const store = createStore(
+export default () => createStore(
     reducers,
     {},
     composeWithDevTools(applyMiddleware(thunk.withExtraArgument(axiosInstance)))
 );
-
-export default () => {
-    console.log('------store')
-    return store;
-};

@@ -20,8 +20,9 @@ const done = () => {
     !isBuilt &&
     server.listen(PORT, () => {
         isBuilt = true;
+        // eslint-disable-next-line no-console
         console.log(
-            `Server listening on http://localhost:${PORT} 🌎...`,
+            `Server listening on http://localhost:${PORT} 🌎...`
         );
     });
     server.use(
@@ -34,21 +35,20 @@ if (isDev) {
     const compiler = webpack([configDevClient, configDevServer]);
 
     const clientCompiler = compiler.compilers[0];
-    const serverCompiler = compiler.compilers[1];
+    // const serverCompiler = compiler.compilers[1];
 
     const webpackDevMiddleware = require('webpack-dev-middleware')(
         compiler,
-        configDevClient.devServer,
+        configDevClient.devServer
     );
 
     const webpackHotMiddlware = require('webpack-hot-middleware')(
         clientCompiler,
-        configDevClient.devServer,
+        configDevClient.devServer
     );
 
     server.use(webpackDevMiddleware);
     server.use(webpackHotMiddlware);
     server.use(webpackHotServerMiddleware(compiler));
-    console.log('Middleware enabled');
     done();
 }

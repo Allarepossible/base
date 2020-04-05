@@ -1,12 +1,12 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router';
+import {renderToString} from 'react-dom/server';
+import {StaticRouter} from 'react-router';
 import createStore from './createStore';
-import { Provider } from 'react-redux';
-import { renderRoutes, matchRoutes} from 'react-router-config';
+import {Provider} from 'react-redux';
+import {renderRoutes, matchRoutes} from 'react-router-config';
 import Routes from '../Routes';
 import {Helmet} from 'react-helmet';
-import { flushChunkNames } from 'react-universal-component/server';
+import {flushChunkNames} from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
 import serialize from 'serialize-javascript';
 
@@ -14,7 +14,7 @@ const store = createStore();
 
 export default ({clientStats}) => (req, res) => {
     const promises = matchRoutes(Routes, req.path)
-        .map(({route}) => {route.loadData ? route.loadData(store) : null});
+        .map(({route}) => {route.loadData ? route.loadData(store) : null;});
 
     Promise.all(promises).then(() => {
         const context = {status: 200, url: ''};
@@ -25,17 +25,18 @@ export default ({clientStats}) => (req, res) => {
                     <div>{renderRoutes(Routes)}</div>
                 </StaticRouter>
             </Provider>
-         );
+        );
 
         const helmet = Helmet.renderStatic();
 
-        const { js, styles } = flushChunks(clientStats, {
+        const {js, styles} = flushChunks(clientStats, {
             chunkNames: flushChunkNames(),
         });
 
         const status = context.status || 200;
 
         if (context.status == 404) {
+            // eslint-disable-next-line no-console
             console.log('Error 404: ', req.originalUrl);
         }
 
@@ -66,7 +67,7 @@ export default ({clientStats}) => (req, res) => {
                         ${js}
                         <script>window.REDUX_DATA = ${serialize(store.getState())}</script>
                     </body>
-                </html>`,
+                </html>`
             );
     });
 };

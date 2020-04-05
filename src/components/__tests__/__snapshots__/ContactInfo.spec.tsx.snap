@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Renders ContactInfo 1`] = `
-.c1 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11,33 +11,23 @@ exports[`Renders ContactInfo 1`] = `
   flex-direction: column;
 }
 
-.c0 {
-  font-size: 16px;
-}
-
-.c2 {
+.c1 {
   font-size: 12px;
 }
 
 <div>
-  <span
-    className="c0"
-    size="l"
-  >
-    Контактная информация
-  </span>
   <div
-    className="c1"
+    className="c0"
   >
     <span
-      className="c2"
+      className="c1"
       size="s"
     >
       Имя: 
       name
     </span>
     <span
-      className="c2"
+      className="c1"
       size="s"
     >
       Тел.: 

@@ -1,15 +1,8 @@
 import React from 'react';
-import {ContactId} from 'entities/contact';
 import Page from 'pages/Page';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 
-interface Props {
-    title: string;
-    contactId: ContactId;
-    getContact: (p: number) => void;
-}
-
-const Home = ({}: Props) => {
+const Home = () => {
     return (
         <Page title={'home Page'}>
             Good morning!

@@ -80,6 +80,7 @@ module.exports = {
             exports: 'always-multiline',
             functions: 'never',
         }],
+        '@typescript-eslint/no-var-requires': 0,
         '@typescript-eslint/no-empty-function': 0,
         '@typescript-eslint/ban-ts-ignore': 0,
         '@typescript-eslint/explicit-function-return-type': 0,

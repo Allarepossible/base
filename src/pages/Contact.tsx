@@ -9,10 +9,9 @@ import Page from 'pages/Page';
 interface Props {
     title: string;
     contactId: ContactId;
-    getContact: (p: number) => void;
 }
 
-const Contact = ({title, contactId, getContact}: Props) => {
+const Contact = ({title, contactId}: Props) => {
     return (
         <Page title={title}>
             {contactId}
@@ -26,11 +25,7 @@ export const mapStateToProps = ({info}: State) => {
     return {title: name, contactId};
 };
 
-const mapDispatchToProps = {
-    getContact: fetchInfo,
-};
-
 export default {
     loadData: ({dispatch}) => dispatch(fetchInfo()),
-    component: connect(mapStateToProps, mapDispatchToProps)(Contact)
+    component: connect(mapStateToProps)(Contact),
 };
