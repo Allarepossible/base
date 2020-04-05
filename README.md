@@ -1,4 +1,4 @@
-#Base for react project
+#SSR react Typescript#
 
 **Used technologies**
 
